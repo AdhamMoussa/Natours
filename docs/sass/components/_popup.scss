@@ -1,0 +1,97 @@
+.popup {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($color-black, .85);
+  z-index: 100000;
+  opacity: 0;
+  visibility: hidden;
+  transition: .4s;
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  }
+  &:target &__content {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  &__content {
+    width: 80%;
+    background-color: $color-white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    box-shadow: 0 2rem 4rem rgba($color-black, .2);
+    border-radius: 3px;
+    overflow: hidden;
+    display: table;
+    transition: .4s .2s;
+    @include respond(tab-port) {
+      padding-bottom: 2rem;
+    }
+    @include respond(phone) {
+      padding: 3.5rem;
+    }
+  }
+  &__left {
+    width: 33.33%;
+    display: table-cell;
+    vertical-align: middle;
+    @include respond(tab-port) {
+      display: block;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+    @include respond(phone) {
+      display: none;
+    }
+  }
+  &__right {
+    width: 66.67%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 5rem;
+    @include respond(tab-port) {
+      display: block;
+      width: 100%;
+    }
+    @include respond(phone) {
+      padding: 0%;
+    }
+  }
+  &__img {
+    display: block;
+    max-width: 100%;
+    @include respond(tab-port) {
+      display: inline;
+      width: 49%;
+      height: 20rem;
+    }
+  }
+  &__text {
+    font-size: 1.4rem;
+    -moz-column-count: 2;
+    -moz-column-gap: 4rem;
+    -moz-column-rule: 1px solid $color-grey-light-2;
+    column-count: 2;
+    column-gap: 4rem;
+    column-rule: 1px solid $color-grey-light-2;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+  }
+  &__close {
+    text-decoration: none;
+    color: $color-grey-dark;
+    font-size: 4rem;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    line-height: .7;
+  }
+}
